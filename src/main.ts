@@ -2,7 +2,7 @@
 import { createApp } from 'vue';
 import { setupNaiveDiscreteApi } from '@/plugins';
 import App from './App.vue';
-// import router, { setupRouter } from './router';
+import router, { setupRouter } from './router';
 import { setupStore } from '@/store';
 
 async function bootstrap() {
@@ -27,11 +27,11 @@ async function bootstrap() {
   //setupGlobalMethods(app);
 
   // 挂载路由
-//   setupRouter(app);
+  setupRouter(app);
 
   // 路由准备就绪后挂载 APP 实例
   // https://router.vuejs.org/api/interfaces/router.html#isready
-//   await router.isReady();
+  await router.isReady();
 
   app.mount('#app', true);
 }

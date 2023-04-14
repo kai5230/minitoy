@@ -25,6 +25,7 @@ export const RootRoute: RouteRecordRaw = {
   path: '/',
   name: 'Root',
   redirect: PageEnum.BASE_HOME,
+  component: () => import('@/views/dashboard/index.vue'),
   meta: {
     title: 'Root',
   },
@@ -47,7 +48,17 @@ export const constantRouter: any[] = [LoginRoute, RootRoute];
 
 const router = createRouter({
   history: createWebHashHistory(''),
-  routes: constantRouter,
+  routes: [
+    // routes 属性和 vue-router 3 的配置一样，通过数组对象的形式，配置路径对应展示的组件。
+    {
+      path: '/',
+      name: '/',
+      component: () => import('@/views/dashboard/index.vue'),
+      meta: {
+        title: '登录',
+      },
+    },
+  ],
   strict: true,
   scrollBehavior: () => ({ left: 0, top: 0 }),
 });
